@@ -27,6 +27,24 @@ allOf:
   - if:
       type: object
       properties:
+        $ref:
+          pattern: '(int(8|16|32|64)-matrix|phandle-array)$'
+      required: [ $ref ]
+    then:
+      properties:
+        items:
+          anyOf:
+            - required: [ items ]
+            - required: [ minItems ]
+            - required: [ maxItems ]
+          items:
+            anyOf:
+              - required: [ items ]
+              - required: [ minItems ]
+              - required: [ maxItems ]
+  - if:
+      type: object
+      properties:
         items:
           type: array
         additionalItems: false
