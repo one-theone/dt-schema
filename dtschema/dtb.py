@@ -57,8 +57,14 @@ def get_stride(prop_len, dim):
 
     # If multiple dimensions, check if one and only one dimension fits
     match = []
-    for outer in range(dim[0][0], dim[0][1] + 1):
-        for inner in range(dim[1][0], dim[1][1] + 1):
+    outer_limit = dim[0][1]
+    if outer_limit == 0:
+        outer_limit = prop_len
+    inner_limit = dim[1][1]
+    if inner_limit == 0:
+        inner_limit = prop_len
+    for outer in range(dim[0][0], outer_limit + 1):
+        for inner in range(dim[1][0], inner_limit + 1):
             if outer * inner == prop_len:
                 match += [inner]
 

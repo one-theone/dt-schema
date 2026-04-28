@@ -26,6 +26,8 @@ def _merge_dim(dim1, dim2):
     for i in range(0, 2):
         minimum = min(dim1[i][0], dim2[i][0])
         maximum = max(dim1[i][1], dim2[i][1])
+        if min(dim1[i][1], dim2[i][1]) == 0:
+            maximum = 0
         if maximum == 1:
             minimum = 1
         d.insert(i, (minimum, maximum))

@@ -106,7 +106,7 @@ def _get_array_range(subschema):
         min = subschema.get('minItems', max)
     else:
         min = subschema.get('minItems', 1)
-        max = subschema.get('maxItems', subschema.get('minItems', 0))
+        max = subschema.get('maxItems', 0)
 
     return (min, max)
 
